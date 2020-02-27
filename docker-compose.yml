@@ -1,0 +1,21 @@
+version: '3'
+services:
+  angular_client:
+    build: ./angularClient
+    ports:
+      - "4200:4200"
+
+  api:
+    build: ./mongoApi
+    ports:
+      - "8181:8181"
+
+  mongodb:
+    ports:
+      - '27017-27019:27017-27019'
+    image: 'mongo:4.0.4'
+    volumes:
+      - mongo-volume:/data/db
+
+volumes:
+  mongo-volume:
